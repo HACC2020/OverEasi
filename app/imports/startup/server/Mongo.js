@@ -26,6 +26,6 @@ function addMessages(data) {
 if (Messages.collection.find().count() === 0) {
   if (Meteor.settings.defaultMessages) {
     console.log('Creating default data.');
-    addMessages(Meteor.settings.defaultMessages);
+    Meteor.settings.defaultMessages.map(data => addMessages(data));
   }
 }
