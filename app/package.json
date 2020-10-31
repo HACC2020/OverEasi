@@ -3,6 +3,7 @@
   "private": true,
   "dependencies": {
     "@babel/runtime": "^7.12.1",
+    "@google-cloud/dialogflow": "^3.3.0",
     "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "graphql": "^14.5.8",
@@ -18,7 +19,8 @@
     "sweetalert": "^2.1.2",
     "uniforms": "^3.0.0-rc.5",
     "uniforms-bridge-simple-schema-2": "^3.0.0-rc.5",
-    "uniforms-semantic": "^3.0.0-rc.5"
+    "uniforms-semantic": "^3.0.0-rc.5",
+    "uuid": "^8.3.1"
   },
   "devDependencies": {
     "babel-eslint": "^10.1.0",
