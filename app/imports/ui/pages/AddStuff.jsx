@@ -9,13 +9,9 @@ import { Stuffs } from '../../api/stuff/Stuff';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
-  name: String,
-  quantity: Number,
-  condition: {
-    type: String,
-    allowedValues: ['excellent', 'good', 'fair', 'poor'],
-    defaultValue: 'good',
-  },
+  intent: String,
+  phrase: String,
+  response: String,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -25,9 +21,9 @@ class AddStuff extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { name, quantity, condition } = data;
+    const { intent, phrase, response } = data;
     const owner = Meteor.user().username;
-    Stuffs.collection.insert({ name, quantity, condition, owner },
+    Stuffs.collection.insert({ intent, phrase, response, owner },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -47,9 +43,9 @@ class AddStuff extends React.Component {
             <Header as="h2" textAlign="center">Add Stuff</Header>
             <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
               <Segment>
-                <TextField name='name'/>
-                <NumField name='quantity' decimal={false}/>
-                <SelectField name='condition'/>
+                <TextField name='intent'/>
+                <TextField name='phrase'/>
+                <TextField name='response'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
