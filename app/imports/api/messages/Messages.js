@@ -12,7 +12,6 @@ class MessagesCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       sessionId: String,
-      time: Date,
       message: String,
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
