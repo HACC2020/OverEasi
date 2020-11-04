@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Segment, Message } from 'semantic-ui-react';
+import { Comment, Segment, Container } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
@@ -23,8 +23,7 @@ class MessageBox extends React.Component {
   /** On submit, insert the data. */
   submit(data, formRef) {
     const { message } = data;
-    const owner = Meteor.user().username;
-    Messages.collection.insert({ message, owner },
+    Messages.collection.insert({ message },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -39,18 +38,21 @@ class MessageBox extends React.Component {
   render() {
     let fRef = null;
     return (
-        <Grid container centered>
-          <Message>
-            {this.props.messages.map((message) => <Chatbox key={message._id} stuff={message} Messages={Messages} />)}
-          </Message>
-            <AutoForm ref={ref => { fRef = ref; }} schema={bridge} onSubmit={data => this.submit(data, fRef)} >
-              <Segment>
-                <TextField name='message'/>
-                <SubmitField value='Submit'/>
-                <ErrorsField/>
-              </Segment>
-            </AutoForm>
-        </Grid>
+        <Container>
+          <Segment>
+            Welcome to Chatbox!
+            {this.props.messages.map((message) => <Chatbox key={message._id} stuff={message} Messages={Messages}/>)}
+          </Segment>
+          <AutoForm ref={ref => {
+            fRef = ref;
+          }} schema={bridge} onSubmit={data => this.submit(data, fRef)}>
+            <Segment>
+              <TextField name='message'/>
+              <SubmitField value='Submit'/>
+              <ErrorsField/>
+            </Segment>
+          </AutoForm>
+        </Container>
     );
   }
 }
