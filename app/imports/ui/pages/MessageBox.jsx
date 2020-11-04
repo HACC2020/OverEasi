@@ -1,5 +1,5 @@
 import React from 'react';
-import { Comment, Segment, Container } from 'semantic-ui-react';
+import { Segment, Container } from 'semantic-ui-react';
 import { AutoForm, ErrorsField, SubmitField, TextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
