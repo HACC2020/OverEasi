@@ -11,6 +11,10 @@
     { "name": "Boogie Board", "quantity": 2, "owner": "admin@foo.com", "condition": "excellent" }
   ],
 
+  "defaultMessages": [
+    { "sessionId": "Basket", "time": 14352, "message": "john@foo.com" }
+  ],
+
   "monti": {
     "appId": "changeme",
     "appSecret": "changeme"
