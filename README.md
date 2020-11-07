@@ -8,7 +8,7 @@ NIC Hawaii develops online services to help citizens do business with the state 
 With the following Covid-19 pandemic, it can be hard to quickly find answers with so much information available. With the Covid-19 chatbot, citizens can get answers to critival Covid-19 quetions easily, quickly, and at any time of the day. 
 
 ## Running The Project
-This project uses meteor to run the site, so first install meteor onto you OS:
+This project uses meteor to run the site, so first install meteor onto your OS:
 
 OSX/Linux\
 `curl https://install.meteor.com/ | sh`
