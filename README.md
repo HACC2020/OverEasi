@@ -1,3 +1,25 @@
 ![ci-badge](https://github.com/ics-software-engineering/meteor-application-template-react/workflows/ci-meteor-application-template-react/badge.svg)
 
 For details, please see http://ics-software-engineering.github.io/meteor-application-template-react/
+
+# Covid-19 Chatbot 
+NIC Hawaii develops online services to help citizens do business with the state or county 24/7 from anywhere without having to visit agency offices. 
+
+With the following Covid-19 pandemic, it can be hard to quickly find answers with so much information available. With the Covid-19 chatbot, citizens can get answers to critival Covid-19 quetions easily, quickly, and at any time of the day. 
+
+## Running The Project
+This project uses meteor to run the site, so first install meteor onto you OS:
+
+OSX/Linux\
+`curl https://install.meteor.com/ | sh`
+
+Windows\
+`choco install meteor`
+
+After installing meteor and cloning the repository onto your local computer, cd into the app/ directory and install third party libraries with\
+`$ meteor npm install`
+
+Now you can run the system with\
+`$ meteor npm run start`
+
+The app should now be running at http://localhost:3000/
