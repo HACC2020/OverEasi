@@ -40,7 +40,7 @@ We are interested in your experience using the OverEasi Chatbot! If you would li
 * [LinkedIn]()
 
 **Irene Ma**
-* Email: [alyssand@hawaii.edu](alyssand@hawaii.edu)
+* Email: [mairene@hawaii.edu](mairene@hawaii.edu)
 * [LinkedIn]()
 
 **Shane Severino**
