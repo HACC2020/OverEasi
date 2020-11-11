@@ -1,6 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
-import { HTTP } from 'meteor/http';
+import { check } from 'meteor/check';
+import { Promise } from 'meteor/promise';
 
 const dialogflow = require('@google-cloud/dialogflow').v2;
 
@@ -23,34 +24,8 @@ Meteor.methods({
     const request = {
       parent: projectAgentPath,
     };
-    const [response] = intentsClient.listIntents(request);
-    response.forEach(intent => {
-      console.log('====================');
-      console.log(`Intent name: ${intent.name}`);
-      console.log(`Intent display name: ${intent.displayName}`);
-      console.log(`Action: ${intent.action}`);
-      console.log(`Root folowup intent: ${intent.rootFollowupIntentName}`);
-      console.log(`Parent followup intent: ${intent.parentFollowupIntentName}`);
-
-      console.log('Input contexts:');
-      intent.inputContextNames.forEach(inputContextName => {
-        console.log(`\tName: ${inputContextName}`);
-      });
-
-      console.log('Output contexts:');
-      intent.outputContexts.forEach(outputContext => {
-        console.log(`\tName: ${outputContext.name}`);
-      });
-    });
-
-    /*
-    try {
-      const result = HTTP.call('GET', `https://dialogflow.googleapis.com/v2/projects/eric-s-agjx/agent/intents?intentView=INTENT_VIEW_UNSPECIFIED&key=[${credentials.api_key}] HTTP/1.1`);
-      return console.log(result);
-    } catch (e) {
-      return console.log('error');
-    }
-     */
+    const [response] = Promise.await(intentsClient.listIntents(request));
+    console.log(response);
   },
 });
 
