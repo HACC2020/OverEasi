@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meteor } from 'meteor/meteor';
-import { Container, Loader } from 'semantic-ui-react';
+import { Container, Header, Loader, Table } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import PropTypes from 'prop-types';
 import Report from '../components/Report';
@@ -15,9 +15,18 @@ class ListReportsAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
-        <Container>
-          {this.props.reports.map((report) => <Report key={report.issues} report={report} Reports={Reports} />)}
-        </Container>
+    <Container>
+      <Header as="h2" textAlign="center">List of Reports</Header>
+      <Table celled padded>
+        <Table.Header>
+          <Table.Row>
+            <Table.HeaderCell singleLine textAlign='center'>Issues</Table.HeaderCell>
+          </Table.Row>
+        </Table.Header>
+        <Table.Body>
+              {this.props.reports.map((report) => <Report key={report.issues} report={report} Reports={Reports} />)}
+        </Table.Body>
+      </Table></Container>
     );
   }
 }
