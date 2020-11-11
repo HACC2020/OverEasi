@@ -11,11 +11,9 @@ class ReportsCollection {
     this.collection = new Mongo.Collection(this.name);
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
-      fullName: String,
-      email: String,
-      zipcode: Number,
+      fullName: { type: String, optional: true },
+      email: { type: String, optional: true },
       issue: String,
-      owner: String,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

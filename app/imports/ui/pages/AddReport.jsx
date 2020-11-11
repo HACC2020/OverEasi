@@ -9,9 +9,8 @@ import { Reports } from '../../api/report/Reports';
 
 /** Create a schema to specify the structure of the data to appear in the form. */
 const formSchema = new SimpleSchema({
-  fullName: String,
-  email: String,
-  zipcode: Number,
+  fullName: { type: String, optional: true },
+  email: { type: String, optional: true },
   issue: String,
 });
 
@@ -22,9 +21,8 @@ class AddReport extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { fullName, email, zipcode, issue } = data;
-    const owner = Meteor.admin().username;
-    Reports.collection.insert({ fullName, email, zipcode, issue, owner },
+    const { fullName, email, issue } = data;
+    Reports.collection.insert({ fullName, email, issue },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -46,7 +44,6 @@ class AddReport extends React.Component {
               <Segment>
                 <TextField name='fullName'/>
                 <TextField name='email'/>
-                <TextField name='zipcode'/>
                 <LongTextField name='issue'/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
