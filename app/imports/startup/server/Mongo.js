@@ -1,6 +1,8 @@
 import { Meteor } from 'meteor/meteor';
 import { Stuffs } from '../../api/stuff/Stuff.js';
 import { Messages } from '../../api/messages/Messages';
+import { Reports } from '../../api/report/Reports';
+
 /* eslint-disable no-console */
 
 /** Initialize the database with a default data document. */
@@ -27,5 +29,18 @@ if (Messages.collection.find().count() === 0) {
   if (Meteor.settings.defaultMessages) {
     console.log('Creating default data.');
     Meteor.settings.defaultMessages.map(data => addMessages(data));
+  }
+}
+
+/** Add Report */
+function addReport(data) {
+  console.log('Adding report');
+  Reports.collection.insert(data);
+}
+
+if (Reports.collection.find().count() === 0) {
+  if (Meteor.settings.defaultReports) {
+    console.log('Creating default data.');
+    Meteor.settings.defaultReports.map(data => addReport(data));
   }
 }
