@@ -1,12 +1,24 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { Table } from 'semantic-ui-react';
+import { Button, Icon, Table } from 'semantic-ui-react';
 
 class Report extends React.Component {
+  resolveReport(docID) {
+    console.log(`item to delete is: ${docID}`);
+    this.props.Reports.collection.remove(docID);
+  }
+
   render() {
     return (
-        <Table.Row><Table.Cell textAlign='left'>{this.props.report.issue}</Table.Cell></Table.Row>
+        <Table.Row>
+          <Table.Cell textAlign='left'>{this.props.report.issue}</Table.Cell>
+          <Table.Cell textAlign='center'>
+            <Button icon onClick={() => this.resolveReport(this.props.report._id)} color="orange">
+              <Icon name='remove'/>
+            </Button>
+          </Table.Cell>
+        </Table.Row>
     );
   }
 }
@@ -14,6 +26,7 @@ class Report extends React.Component {
 /** Require a document to be passed to this component. */
 Report.propTypes = {
   report: PropTypes.object.isRequired,
+  Reports: PropTypes.object.isRequired,
 };
 
 /** Wrap this component in withRouter since we use the <Link> React Router element. */
