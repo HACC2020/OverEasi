@@ -7,7 +7,8 @@ import { HashRouter as Router, Route, Switch, Redirect } from 'react-router-dom'
 import NavBar from '../components/NavBar';
 import Footer from '../components/Footer';
 import Landing from '../pages/Landing';
-import ListStuff from '../pages/ListStuff';
+// import ListStuff from '../pages/ListStuff';
+import ListIntentMockup from '../pages/ListIntentMockup';
 import EditStuff from '../pages/EditStuff';
 import NotFound from '../pages/NotFound';
 import Signin from '../pages/Signin';
@@ -16,6 +17,7 @@ import Signout from '../pages/Signout';
 import Chatbot from '../pages/Chatbot';
 import AddReport from '../pages/AddReport';
 import ListReportsAdmin from '../pages/ListReportsAdmin';
+import AddIntentMockup from '../pages/AddIntentMockup';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -30,7 +32,8 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/chatbot" component={Chatbot}/>
               <Route path="/addreport" component={AddReport}/>
-              <AdminProtectedRoute path="/list" component={ListStuff}/>
+              <AdminProtectedRoute path="/list" component={ListIntentMockup}/>
+              <AdminProtectedRoute path="/add" component={AddIntentMockup}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/reportadmin" component={ListReportsAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
