@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
-import { check } from 'meteor/check';
 import { Promise } from 'meteor/promise';
+import { Intents } from '../../api/intents/Intents';
 
 const dialogflow = require('@google-cloud/dialogflow').v2;
 
@@ -23,9 +23,20 @@ Meteor.methods({
     const projectAgentPath = intentsClient.agentPath(credentials.project_id);
     const request = {
       parent: projectAgentPath,
+      intentView: 'INTENT_VIEW_FULL',
     };
     const [response] = Promise.await(intentsClient.listIntents(request));
-    console.log(response);
+    _.forEach(response, (entry) => Intents.collection.update(entry.name,
+        { $set: { intent: entry.displayName,
+        phrase: _.map(entry.trainingPhrases, (entry2) => entry2.parts[0].text),
+        message: entry.messages[0].text.text } },
+        { upsert: true },
+        (error) => (error ?
+            console.log('error adding') :
+            console.log('added successfully'))));
+    /*
+    console.log(_.map(response, (entry) => entry.displayName));
+    */
   },
 });
 

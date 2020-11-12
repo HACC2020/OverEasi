@@ -12,8 +12,18 @@ class IntentsCollection {
     // Define the structure of each document in the collection.
     this.schema = new SimpleSchema({
       intent: String,
-      phrases: [String],
-      response: String,
+      phrase: {
+        type: Array,
+      },
+      'phrase.$': {
+        type: String,
+      },
+      message: {
+        type: Array,
+      },
+      'message.$': {
+        type: String,
+      },
     }, { tracker: Tracker });
     // Ensure collection documents obey schema.
     this.collection.attachSchema(this.schema);
