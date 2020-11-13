@@ -7,11 +7,17 @@ import { Intents } from '../../api/intents/Intents';
 const dialogflow = require('@google-cloud/dialogflow').v2;
 
 /** Meteor functions:
+ *
  *  listIntents: When called, requests Intents Data from API, updates Intents Collection with IntentName, Training Phrase, and Message.
+ *  @param: none
+ *
  *  addIntents: When called, requests to add Intent to API, updates Intents Collection.
- *  To Add:
+ *  @param: displayName: String, rawPhrases: [String], messages: [String]
+ *
  *  deleteIntents: When called, requests to remove Intent from API, updates Intents Collection.
- *  editIntents: When called, requests to edit Intent from API, updates Intents Collection.
+ *  @param: intentPath: String (IntentsCollection item ID)
+ *
+ *  Note: If these functions are not in the same file IntentsCollection doesn't update correctly.
  */
 
 const credentials = {
@@ -22,6 +28,7 @@ const credentials = {
 };
 const listIntents = 'Intents.list';
 const addIntent = 'Intents.add';
+const deleteIntent = 'Intents.delete';
 
 Meteor.methods({
   'Intents.list'() {
@@ -40,9 +47,6 @@ Meteor.methods({
         (error) => (error ?
             console.log('error adding') :
             console.log('added successfully'))));
-    /*
-    console.log(_.map(response, (entry) => entry.displayName));
-    */
   },
 });
 
@@ -81,10 +85,16 @@ Meteor.methods({
     };
     const [response] = Promise.await(intentsClient.createIntent(createIntentRequest));
     console.log(`Intent ${response.name} created`);
-    /*
-    console.log(_.map(response, (entry) => entry.displayName));
-    */
   },
 });
 
-export { listIntents, addIntent };
+Meteor.methods({
+  'Intents.delete'(intentPath) {
+    const intentsClient = new dialogflow.IntentsClient({ credentials });
+    check(intentPath, String);
+    const request = { name: intentPath };
+    const [response] = Promise.await(intentsClient.deleteIntent(request));
+    console.log(`Intent ${response.name} deleted`);
+  },
+});
+export { listIntents, addIntent, deleteIntent };
