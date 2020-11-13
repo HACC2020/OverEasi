@@ -1,12 +1,17 @@
 import { Meteor } from 'meteor/meteor';
 import { _ } from 'meteor/underscore';
+import { check } from 'meteor/check';
 import { Promise } from 'meteor/promise';
 import { Intents } from '../../api/intents/Intents';
 
 const dialogflow = require('@google-cloud/dialogflow').v2;
 
-/** I have no idea if this works but it looks right :)
- *
+/** Meteor functions:
+ *  listIntents: When called, requests Intents Data from API, updates Intents Collection with IntentName, Training Phrase, and Message.
+ *  addIntents: When called, requests to add Intent to API, updates Intents Collection.
+ *  To Add:
+ *  deleteIntents: When called, requests to remove Intent from API, updates Intents Collection.
+ *  editIntents: When called, requests to edit Intent from API, updates Intents Collection.
  */
 
 const credentials = {
@@ -16,6 +21,7 @@ const credentials = {
   api_key: Meteor.settings.private_key_id,
 };
 const listIntents = 'Intents.list';
+const addIntent = 'Intents.add';
 
 Meteor.methods({
   'Intents.list'() {
@@ -40,4 +46,45 @@ Meteor.methods({
   },
 });
 
-export { listIntents };
+Meteor.methods({
+  'Intents.add'(displayName, rawPhrases, messages) {
+    const intentsClient = new dialogflow.IntentsClient({ credentials });
+    check(displayName, String);
+    check(rawPhrases, Array);
+    check(messages, Array);
+    const projectAgentPath = intentsClient.agentPath(credentials.project_id);
+    const trainingPhrases = [];
+    _.forEach(rawPhrases, (phrase) => {
+      const part = {
+        text: phrase,
+      };
+      const trainingPhrase = {
+        type: 'EXAMPLE',
+        parts: [part],
+      };
+      trainingPhrases.push(trainingPhrase);
+    });
+    const messageText = {
+      text: messages,
+    };
+    const message = {
+      text: messageText,
+    };
+    const intent = {
+      displayName: displayName,
+      trainingPhrases: trainingPhrases,
+      messages: [message],
+    };
+    const createIntentRequest = {
+      parent: projectAgentPath,
+      intent: intent,
+    };
+    const [response] = Promise.await(intentsClient.createIntent(createIntentRequest));
+    console.log(`Intent ${response.name} created`);
+    /*
+    console.log(_.map(response, (entry) => entry.displayName));
+    */
+  },
+});
+
+export { listIntents, addIntent };
