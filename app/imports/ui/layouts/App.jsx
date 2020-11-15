@@ -23,7 +23,7 @@ class App extends React.Component {
   render() {
     return (
         <Router>
-          <div>
+          <div className="background spacing">
             <NavBar/>
             <Switch>
               <Route exact path="/" component={Landing}/>
@@ -38,8 +38,8 @@ class App extends React.Component {
               <ProtectedRoute path="/signout" component={Signout}/>
               <Route component={NotFound}/>
             </Switch>
-            <Footer/>
           </div>
+          <Footer/>
         </Router>
     );
   }

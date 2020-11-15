@@ -11,8 +11,7 @@ class ListIntent extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     return (
-        <div className="background">
-        <Container className="background">
+        <Container>
           <Header as="h2" textAlign="center">List Intents</Header>
           <Table celled>
             <Table.Header>
@@ -20,7 +19,6 @@ class ListIntent extends React.Component {
                 <Table.HeaderCell>Intent Name</Table.HeaderCell>
                 <Table.HeaderCell>Training Phrases</Table.HeaderCell>
                 <Table.HeaderCell>Response</Table.HeaderCell>
-                <Table.HeaderCell>Edit</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>
@@ -32,7 +30,6 @@ class ListIntent extends React.Component {
             </Table.Body>
           </Table>
         </Container>
-        </div>
     );
   }
 }

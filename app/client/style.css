@@ -1,4 +1,8 @@
 .background {
-  background: url('images/background-2.jpg') no-repeat center center fixed;
+  background: url('images/background.jpg') no-repeat center center fixed;
   background-size: cover;
+}
+
+.spacing {
+  padding-bottom: 50px;
 }
