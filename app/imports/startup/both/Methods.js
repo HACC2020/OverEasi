@@ -97,4 +97,5 @@ Meteor.methods({
     console.log(`Intent ${response.name} deleted`);
   },
 });
-export { listIntents, addIntent, deleteIntent };
+
+export { listIntents, deleteIntent };

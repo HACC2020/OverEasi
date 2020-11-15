@@ -1,22 +1,30 @@
 import React from 'react';
+import { Meteor } from 'meteor/meteor';
 import { Table, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter, Link } from 'react-router-dom';
-import { Intents } from '../../api/intents/Intents';
+import { deleteIntent } from '../../startup/both/Methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListIntent.jsx. */
 class Intent extends React.Component {
-    removeItem(docID) {
+    async removeItem(docID) {
     console.log(`item to delete is: ${docID}`);
     this.props.Intents.collection.remove(docID);
+    Meteor.call(deleteIntent, docID, (error) => {
+      if (error) {
+        console.log('error');
+      } else {
+        console.log('success');
+      }
+    });
   }
 
   render() {
     return (
         <Table.Row>
           <Table.Cell>{this.props.intent.intent}</Table.Cell>
-          <Table.Cell>{this.props.intent.map((phrase, index) => <Intents key={index} phrase={phrase}/>)}</Table.Cell>
-          <Table.Cell>{this.props.intent.map((message, index) => <Intents key={index} message={message}/>)}</Table.Cell>
+          <Table.Cell>{this.props.intent.phrase}</Table.Cell>
+          <Table.Cell>{this.props.intent.message}</Table.Cell>
           <Table.Cell>
             <Link to={`/edit/${this.props.intent._id}`}>Edit</Link>
           </Table.Cell>
