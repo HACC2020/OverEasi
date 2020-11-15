@@ -5,16 +5,15 @@ import { NavLink } from 'react-router-dom';
 /** Render a Not Found page if the user enters a URL that doesn't match any route. */
 class Chatbot extends React.Component {
   render() {
-    const temp = { paddingTop: '10px' };
+    const spacing = { paddingTop: '10px' };
     return (
-        <Container style={ temp } textAlign='left'>
-          <Button.Group basic color="orange">
-            <Button as={NavLink} exact to="/addreport">
+        <Container style={ spacing } textAlign='left'>
+            <Button as={NavLink} exact to="/addreport" color="orange">
               <Button.Content>
                 <Icon name='exclamation triangle'/> Report a problem
               </Button.Content>
             </Button>
-            <Button>
+            <Button color="orange">
               <Button.Content>
                 <Icon name='phone'/>
                 <Dropdown text='Support' pointing="top left">
@@ -25,7 +24,6 @@ class Chatbot extends React.Component {
                 </Dropdown>
               </Button.Content>
             </Button>
-          </Button.Group>
             <Segment inverted color='black'>
             <iframe
                 allow="microphone;"
