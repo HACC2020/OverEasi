@@ -15,6 +15,7 @@ class ListReportsAdmin extends React.Component {
   /** Render the page once subscriptions have been received. */
   renderPage() {
     return (
+    <div className="background">
     <Container>
       <Header as="h2" textAlign="center">List of Reports</Header>
       <Table celled padded>
@@ -28,6 +29,7 @@ class ListReportsAdmin extends React.Component {
               {this.props.reports.map((report) => <Report key={report.issues} report={report} Reports={Reports} />)}
         </Table.Body>
       </Table></Container>
+    </div>
     );
   }
 }

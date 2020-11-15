@@ -6,7 +6,9 @@ import Chatbot from './Chatbot';
 class Landing extends React.Component {
   render() {
     return (
+        <div className="background">
        <Chatbot/>
+        </div>
     );
   }
 }
