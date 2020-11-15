@@ -15,8 +15,8 @@ class Intent extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>{this.props.intent.intent}</Table.Cell>
-          <Table.Cell>{this.props.intent.map((phrase, index) => <Intents key={index} phrase={phrase}/>)}</Table.Cell>
-          <Table.Cell>{this.props.intent.map((message, index) => <Intents key={index} message={message}/>)}</Table.Cell>
+          <Table.Cell>{this.props.intent.phrase}</Table.Cell>
+          <Table.Cell>{this.props.intent.message}</Table.Cell>
           <Table.Cell>
             <Link to={`/edit/${this.props.intent._id}`}>Edit</Link>
           </Table.Cell>

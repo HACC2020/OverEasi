@@ -11,8 +11,8 @@ class ListIntent extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     return (
-        <div className="background-2">
-        <Container>
+        <div className="background">
+        <Container className="background">
           <Header as="h2" textAlign="center">List Intents</Header>
           <Table celled>
             <Table.Header>
