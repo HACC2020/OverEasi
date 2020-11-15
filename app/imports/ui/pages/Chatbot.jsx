@@ -5,8 +5,9 @@ import { NavLink } from 'react-router-dom';
 /** Render a Not Found page if the user enters a URL that doesn't match any route. */
 class Chatbot extends React.Component {
   render() {
+    const temp = { paddingTop: '10px' };
     return (
-        <Container textAlign='left'>
+        <Container style={ temp } textAlign='left'>
           <Button.Group basic color="orange">
             <Button as={NavLink} exact to="/addreport">
               <Button.Content>

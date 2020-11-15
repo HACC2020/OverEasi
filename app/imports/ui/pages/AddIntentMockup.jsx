@@ -6,8 +6,8 @@ class AddIntentMockup extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
     return (
-
         <Container>
+          <div className="background-2">
           <Header as="h2" textAlign="center">Add Intents</Header>
           <Form>
           <Form.Field>
@@ -24,6 +24,7 @@ class AddIntentMockup extends React.Component {
           </Form.Field>
           <Button type='submit'>Submit</Button>
         </Form>
+          </div>
         </Container>
     );
   }
