@@ -14,7 +14,7 @@ const formSchema = new SimpleSchema({
   Phrases: {
     type: Array,
     minCount: 1,
-    maxCount: 4,
+    maxCount: 10,
   },
   'Phrases.$': {
     type: String,
@@ -22,7 +22,7 @@ const formSchema = new SimpleSchema({
   Responses: {
     type: Array,
     minCount: 1,
-    maxCount: 4,
+    maxCount: 10,
   },
   'Responses.$': {
     type: String,
