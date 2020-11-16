@@ -5,29 +5,21 @@ import { Grid, Icon, Header } from 'semantic-ui-react';
 class About extends React.Component {
   render() {
     return (
-          <Grid container centered stackable columns={3}>
-
-            <Grid.Column textAlign='center'>
-              <Icon name='users' size='huge' inverted/>
-              <Header as='h1' inverted>Multiple Users</Header>
-              <Header as='h3' inverted>This address book allows any number of users to register and save their business contacts. You can only see the contacts that you have created.
-              </Header>
-            </Grid.Column>
-
-            <Grid.Column textAlign='center'>
-              <Icon name='file alternate' size='huge' inverted/>
-              <Header as='h1' inverted>Contact Details</Header>
-              <Header as='h3' inverted>For each contact you can save their name, address, and phone number.</Header>
-            </Grid.Column>
-
-            <Grid.Column textAlign='center'>
-              <Icon name='calendar check' size='huge' inverted/>
-              <Header as='h1' inverted>Timestamped Notes</Header>
-              <Header as='h3' inverted>Each time you make contact with a contact, you can write a note that summarizes
-                the conversation. This note is saved along with a timestamp and the contact.
-              </Header>
-            </Grid.Column>
-
+          <Grid container centered>
+            <Grid.Row>
+              <Grid.Column textAlign='center'>
+                <Icon name='check circle' size='huge' inverted />
+                <Header as='h1' inverted>Goal</Header>
+                <Header as='h3' inverted>The goal of this application is to provide the community a one-stop-shop for COVID-19 information related to Hawaii.
+                  While there are great sources on the Internet such as the
+                  <a color='white' href=' https://hawaiicovid19.com/'> COVID-19 State of Hawaii Portal </a>
+                  and the
+                  <a href='https://health.hawaii.gov/coronavirusdisease2019/'> State of Hawaii Department of Health Disease Outbreak Control Division </a>
+                  that provide users with updated information and statistics on the current COVID-19 situation here in Hawaii, the data is often spread across several sub pages.
+                  Our Chatbox consolidates the information for the user and answers their specific questions.
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
     );
   }
