@@ -17,6 +17,7 @@ import Chatbot from '../pages/Chatbot';
 import AddReport from '../pages/AddReport';
 import ListReportsAdmin from '../pages/ListReportsAdmin';
 import AddIntents from '../pages/AddIntents';
+import About from '../pages/About';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -31,6 +32,7 @@ class App extends React.Component {
               <Route path="/signup" component={Signup}/>
               <Route path="/chatbot" component={Chatbot}/>
               <Route path="/addreport" component={AddReport}/>
+              <Route path="/about" component={About}/>
               <AdminProtectedRoute path="/list" component={ListIntent}/>
               <AdminProtectedRoute path="/add" component={AddIntents}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
