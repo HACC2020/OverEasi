@@ -6,3 +6,7 @@
 .spacing {
   padding-bottom: 50px;
 }
+
+.button-color {
+  background-color: #a5d175 !important;
+}

@@ -8,12 +8,12 @@ class Chatbot extends React.Component {
     const spacing = { paddingTop: '10px' };
     return (
         <Container style={ spacing } textAlign='left'>
-            <Button as={NavLink} exact to="/addreport" color="orange">
+            <Button as={NavLink} exact to="/addreport" className="button-color" >
               <Button.Content>
                 <Icon name='exclamation triangle'/> Report a problem
               </Button.Content>
             </Button>
-            <Button color="orange">
+            <Button className="button-color">
               <Button.Content>
                 <Icon name='phone'/>
                 <Dropdown text='Support' pointing="top left">
