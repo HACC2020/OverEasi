@@ -3,6 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { Table, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
+import { _ } from 'meteor/underscore';
 import { deleteIntent } from '../../startup/both/Methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListIntent.jsx. */
@@ -23,8 +24,8 @@ class Intent extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>{this.props.intent.intent}</Table.Cell>
-          <Table.Cell>{this.props.intent.phrase[0]}<br/>{this.props.intent.phrase[1]}</Table.Cell>
-          <Table.Cell>{this.props.intent.message}</Table.Cell>
+          <Table.Cell>{this.props.intent.phrase.map((entry, index) => <span key={index}><li>{entry}</li><br /></span>)}</Table.Cell>
+          <Table.Cell>{this.props.intent.message.map((entry, index) => <span key={index}><li>{entry}</li><br /></span>)}</Table.Cell>
           <Table.Cell>
             <Button icon onClick={() => this.removeItem(this.props.intent._id)}>
               <Icon name='trash' />
