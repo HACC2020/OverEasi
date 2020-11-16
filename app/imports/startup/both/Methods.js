@@ -51,14 +51,11 @@ Meteor.methods({
 });
 
 Meteor.methods({
-  'Intents.add'(displayName, rawPhrases, messages) {
+  'Intents.add'({ Intent, Phrases, Responses }) {
     const intentsClient = new dialogflow.IntentsClient({ credentials });
-    check(displayName, String);
-    check(rawPhrases, Array);
-    check(messages, Array);
     const projectAgentPath = intentsClient.agentPath(credentials.project_id);
     const trainingPhrases = [];
-    _.forEach(rawPhrases, (phrase) => {
+    _.forEach(Phrases, (phrase) => {
       const part = {
         text: phrase,
       };
@@ -69,13 +66,13 @@ Meteor.methods({
       trainingPhrases.push(trainingPhrase);
     });
     const messageText = {
-      text: messages,
+      text: Responses,
     };
     const message = {
       text: messageText,
     };
     const intent = {
-      displayName: displayName,
+      displayName: Intent,
       trainingPhrases: trainingPhrases,
       messages: [message],
     };
@@ -93,9 +90,9 @@ Meteor.methods({
     const intentsClient = new dialogflow.IntentsClient({ credentials });
     check(intentPath, String);
     const request = { name: intentPath };
-    const [response] = Promise.await(intentsClient.deleteIntent(request));
-    console.log(`Intent ${response.name} deleted`);
+    Promise.await(intentsClient.deleteIntent(request));
+    console.log('Intent deleted');
   },
 });
 
-export { listIntents, deleteIntent };
+export { listIntents, addIntent, deleteIntent };

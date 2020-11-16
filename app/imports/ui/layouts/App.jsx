@@ -16,7 +16,7 @@ import Signout from '../pages/Signout';
 import Chatbot from '../pages/Chatbot';
 import AddReport from '../pages/AddReport';
 import ListReportsAdmin from '../pages/ListReportsAdmin';
-import AddIntentMockup from '../pages/AddIntentMockup';
+import AddIntents from '../pages/AddIntents';
 
 /** Top-level layout component for this application. Called in imports/startup/client/startup.jsx. */
 class App extends React.Component {
@@ -32,7 +32,7 @@ class App extends React.Component {
               <Route path="/chatbot" component={Chatbot}/>
               <Route path="/addreport" component={AddReport}/>
               <AdminProtectedRoute path="/list" component={ListIntent}/>
-              <AdminProtectedRoute path="/add" component={AddIntentMockup}/>
+              <AdminProtectedRoute path="/add" component={AddIntents}/>
               <ProtectedRoute path="/edit/:_id" component={EditStuff}/>
               <AdminProtectedRoute path="/reportadmin" component={ListReportsAdmin}/>
               <ProtectedRoute path="/signout" component={Signout}/>
