@@ -20,6 +20,17 @@ class About extends React.Component {
                 </Header>
               </Grid.Column>
             </Grid.Row>
+
+            <Grid.Row>
+              <Grid.Column textAlign='center'>
+                <Icon name='talk' size='huge' inverted/>
+                <Header as='h1' inverted>Feedback</Header>
+                <Header as='h3' inverted>Team OverEasi is always looking for ways to grow and improve or Chatbox.
+                  If you have any thoughts or recommendations, we would appreciate it if you took the time to fill out
+                  <a href='https://docs.google.com/forms/d/e/1FAIpQLSfKiap-pzjMusGuSkQ-0-TxT3dWRsufpFz8Dt9r2gEDj4eLyA/viewform'>our Google Forms survey</a>
+                </Header>
+              </Grid.Column>
+            </Grid.Row>
           </Grid>
     );
   }
