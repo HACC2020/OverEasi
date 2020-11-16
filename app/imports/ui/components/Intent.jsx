@@ -7,7 +7,7 @@ import { deleteIntent } from '../../startup/both/Methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListIntent.jsx. */
 class Intent extends React.Component {
-    async removeItem(docID) {
+  async removeItem(docID) {
     console.log(`item to delete is: ${docID}`);
     this.props.Intents.collection.remove(docID);
     Meteor.call(deleteIntent, docID, (error) => {
@@ -23,7 +23,7 @@ class Intent extends React.Component {
     return (
         <Table.Row>
           <Table.Cell>{this.props.intent.intent}</Table.Cell>
-          <Table.Cell>{this.props.intent.phrase}</Table.Cell>
+          <Table.Cell>{this.props.intent.phrase[0]}<br/>{this.props.intent.phrase[1]}</Table.Cell>
           <Table.Cell>{this.props.intent.message}</Table.Cell>
           <Table.Cell>
             <Button icon onClick={() => this.removeItem(this.props.intent._id)}>
