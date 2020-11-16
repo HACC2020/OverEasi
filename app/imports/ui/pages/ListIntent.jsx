@@ -5,11 +5,19 @@ import { Container, Header, Table } from 'semantic-ui-react';
 import { withTracker } from 'meteor/react-meteor-data';
 import { Intents } from '../../api/intents/Intents';
 import Intent from '../components/Intent';
+import { listIntents } from '../../startup/both/Methods';
 
 /** Renders the Page for adding a document. */
 class ListIntent extends React.Component {
   /** Render the form. Use Uniforms: https://github.com/vazco/uniforms */
   render() {
+    Meteor.call(listIntents, (error) => {
+      if (error) {
+        console.log('error');
+      } else {
+        console.log('success');
+      }
+    });
     return (
         <Container>
           <Header as="h2" textAlign="center">List Intents</Header>
