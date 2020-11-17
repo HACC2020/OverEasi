@@ -1,6 +1,5 @@
-![ci-badge](https://github.com/ics-software-engineering/meteor-application-template-react/workflows/ci-meteor-application-template-react/badge.svg)
-
-For details, please see http://ics-software-engineering.github.io/meteor-application-template-react/
+# Deployed Here
+https://overeasi.me/
 
 # Covid-19 Chatbot 
 NIC Hawaii develops online services to help citizens do business with the state or county 24/7 from anywhere without having to visit agency offices. 
