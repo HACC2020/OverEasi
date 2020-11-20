@@ -86,6 +86,41 @@ Meteor.methods({
 });
 
 Meteor.methods({
+  'Intents.edit'({ Intent, Phrases, Responses }) {
+    const intentsClient = new dialogflow.v2.IntentsClient({ credentials });
+    const projectAgentPath = intentsClient.agentPath(credentials.project_id);
+    const trainingPhrases = [];
+    _.forEach(Phrases, (phrase) => {
+      const part = {
+        text: phrase,
+      };
+      const trainingPhrase = {
+        type: 'EXAMPLE',
+        parts: [part],
+      };
+      trainingPhrases.push(trainingPhrase);
+    });
+    const messageText = {
+      text: Responses,
+    };
+    const message = {
+      text: messageText,
+    };
+    const intent = {
+      displayName: Intent,
+      trainingPhrases: trainingPhrases,
+      messages: [message],
+    };
+    const createIntentRequest = {
+      parent: projectAgentPath,
+      intent: intent,
+    };
+    const [response] = Promise.await(intentsClient.updateIntent(createIntentRequest));
+    console.log(`Intent ${response.name} created`);
+  },
+});
+
+Meteor.methods({
   'Intents.delete'(intentPath) {
     const intentsClient = new dialogflow.IntentsClient({ credentials });
     check(intentPath, String);

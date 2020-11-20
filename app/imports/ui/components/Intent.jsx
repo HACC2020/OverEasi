@@ -3,7 +3,6 @@ import { Meteor } from 'meteor/meteor';
 import { Table, Button, Icon } from 'semantic-ui-react';
 import PropTypes from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { _ } from 'meteor/underscore';
 import { deleteIntent } from '../../startup/both/Methods';
 
 /** Renders a single row in the List Stuff table. See pages/ListIntent.jsx. */
