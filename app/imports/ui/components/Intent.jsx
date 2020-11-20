@@ -27,8 +27,8 @@ class Intent extends React.Component {
           <Table.Cell>{this.props.intent.phrase.map((entry, index) => <span key={index}><li>{entry}</li><br /></span>)}</Table.Cell>
           <Table.Cell>{this.props.intent.message.map((entry, index) => <span key={index}><li>{entry}</li><br /></span>)}</Table.Cell>
           <Table.Cell>
-            <Button icon onClick={() => this.removeItem(this.props.intent._id)}>
-              <Icon name='trash' />
+            <Button icon onClick={() => this.removeItem(this.props.intent._id)} className="button-color">
+              <Icon name='trash'/>
             </Button>
           </Table.Cell>
         </Table.Row>

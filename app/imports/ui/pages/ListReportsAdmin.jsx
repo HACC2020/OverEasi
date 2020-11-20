@@ -21,9 +21,10 @@ class ListReportsAdmin extends React.Component {
       <Table celled padded>
         <Table.Header>
           <Table.Row>
-            <Table.HeaderCell singleLine textAlign='center'>Report Created On</Table.HeaderCell>
+            <Table.HeaderCell singleLine textAlign='center' collapsing>Report Created On</Table.HeaderCell>
+            <Table.HeaderCell singleLine textAlign='center' collapsing>Category</Table.HeaderCell>
             <Table.HeaderCell singleLine textAlign='center'>Issues</Table.HeaderCell>
-            <Table.HeaderCell textAlign='center'>Resolve Issue</Table.HeaderCell>
+            <Table.HeaderCell textAlign='center' collapsing>Resolve Issue</Table.HeaderCell>
           </Table.Row>
         </Table.Header>
         <Table.Body>
