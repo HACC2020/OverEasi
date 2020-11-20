@@ -12,10 +12,13 @@ class Report extends React.Component {
   render() {
     return (
         <Table.Row>
-          <Table.Cell className="dateMargin" textAlign='center'>{this.props.report.createdAt.toLocaleDateString('en-US')}</Table.Cell>
+          <Table.Cell className="dateMargin" textAlign='center'>
+            {this.props.report.createdAt.toLocaleDateString('en-US')}
+          </Table.Cell>
+          <Table.Cell textAlign='left'>{this.props.report.category}</Table.Cell>
           <Table.Cell textAlign='left'>{this.props.report.issue}</Table.Cell>
           <Table.Cell clsssName="deleteMargin" textAlign='center'>
-            <Button icon onClick={() => this.resolveReport(this.props.report._id)} color="orange">
+            <Button icon onClick={() => this.resolveReport(this.props.report._id)} className="button-color">
               <Icon name='remove'/>
             </Button>
           </Table.Cell>

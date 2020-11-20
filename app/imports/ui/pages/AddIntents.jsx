@@ -60,7 +60,7 @@ class AddStuff extends React.Component {
                 <TextField name='Intent'/>
                 <ListField name="Phrases"/>
                 <ListField name="Responses"/>
-                <SubmitField value='Submit'/>
+                <SubmitField value='Submit' className="button-color"/>
                 <ErrorsField/>
               </Segment>
             </AutoForm>
