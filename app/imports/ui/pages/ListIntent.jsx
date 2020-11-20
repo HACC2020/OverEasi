@@ -27,6 +27,7 @@ class ListIntent extends React.Component {
                 <Table.HeaderCell>Intent Name</Table.HeaderCell>
                 <Table.HeaderCell>Training Phrases</Table.HeaderCell>
                 <Table.HeaderCell>Response</Table.HeaderCell>
+                <Table.HeaderCell>Edit</Table.HeaderCell>
                 <Table.HeaderCell>Delete</Table.HeaderCell>
               </Table.Row>
             </Table.Header>

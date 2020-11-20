@@ -28,6 +28,7 @@ const credentials = {
 };
 const listIntents = 'Intents.list';
 const addIntent = 'Intents.add';
+const editIntent = 'Intents.edit';
 const deleteIntent = 'Intents.delete';
 
 Meteor.methods({
@@ -130,4 +131,4 @@ Meteor.methods({
   },
 });
 
-export { listIntents, addIntent, deleteIntent };
+export { listIntents, addIntent, editIntent, deleteIntent };
