@@ -14,6 +14,7 @@ class ReportsCollection {
       fullName: { type: String, optional: true },
       email: { type: String, optional: true },
       issue: String,
+      createdAt: Date,
     }, { tracker: Tracker });
     // Attach the schema to the collection, so all attempts to insert a document are checked against schema.
     this.collection.attachSchema(this.schema);

@@ -12,6 +12,7 @@ class Report extends React.Component {
   render() {
     return (
         <Table.Row>
+          <Table.Cell textAlign='center'>{this.props.report.createdAt.toLocaleDateString('en-US')}</Table.Cell>
           <Table.Cell textAlign='left'>{this.props.report.issue}</Table.Cell>
           <Table.Cell textAlign='center'>
             <Button icon onClick={() => this.resolveReport(this.props.report._id)} color="orange">

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Grid, Segment, Header } from 'semantic-ui-react';
-import { AutoForm, ErrorsField, SubmitField, TextField, LongTextField } from 'uniforms-semantic';
+import { AutoForm, ErrorsField, SubmitField, HiddenField, TextField, LongTextField } from 'uniforms-semantic';
 import swal from 'sweetalert';
 import { Meteor } from 'meteor/meteor';
 import SimpleSchema2Bridge from 'uniforms-bridge-simple-schema-2';
@@ -12,6 +12,7 @@ const formSchema = new SimpleSchema({
   fullName: { type: String, optional: true },
   email: { type: String, optional: true },
   issue: String,
+  createdAt: Date,
 });
 
 const bridge = new SimpleSchema2Bridge(formSchema);
@@ -21,8 +22,8 @@ class AddReport extends React.Component {
 
   /** On submit, insert the data. */
   submit(data, formRef) {
-    const { fullName, email, issue } = data;
-    Reports.collection.insert({ fullName, email, issue },
+    const { fullName, email, issue, createdAt } = data;
+    Reports.collection.insert({ fullName, email, issue, createdAt },
       (error) => {
         if (error) {
           swal('Error', error.message, 'error');
@@ -45,6 +46,7 @@ class AddReport extends React.Component {
                 <TextField name='fullName'/>
                 <TextField name='email'/>
                 <LongTextField name='issue'/>
+                <HiddenField name='createdAt' value={new Date().getTime()}/>
                 <SubmitField value='Submit'/>
                 <ErrorsField/>
               </Segment>
