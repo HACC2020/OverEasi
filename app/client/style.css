@@ -10,3 +10,11 @@
 .button-color {
   background-color: #a5d175 !important;
 }
+
+.deleteMargin {
+  width: 89px;
+}
+
+.dateMargin {
+  width: 108px;
+}
